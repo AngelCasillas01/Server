@@ -1,0 +1,133 @@
+
+# Use users' display names rather than than their raw username in various messages. Display names are set by other plugins.
+use-display-names: true
+
+# Similar to use-display-names, this allows usage of users' display names when looking up players.
+lookup-with-display-names: true
+
+# For /time, /weather, and other commands, broadcast change messages to everyone when you change world information with the commands.
+broadcast-changes: true
+
+# Disables some features to be compatible with badly-written server wrappers.
+crappy-wrapper-compat: true
+
+# When this setting is enabled, CommandBook's commands will be registered AFTER every 
+# other plugin's commands. If any other plugin registers a command that conflicts with
+# one of CommandBook's commands, the CommandBook command will be accessible with 
+# /commandbook:<command>, and the other plugin's command will be accessible 
+# with /<command>
+low-priority-command-registration: false
+
+# Give operators (set with the Minecraft /op command) all permissions.
+op-permissions: true
+component-class-dirs:
+- component-classes
+component-jar-dirs:
+- component-jars
+
+# A list of enabled and disabled components. Components in the disabled list 
+# will automatically be removed from the enabled list. Fully qualified class names can 
+# or aliases (automatically added to the list by CommandBook) can be used as component names.
+components:
+    disabled:
+    - freeze
+    - help
+    enabled:
+    - bans
+    - homes
+    - warps
+    - afk
+    - messaging
+    - teleport
+    - items
+    - kits
+    - midi
+    - time
+    - name-verification
+    - fun
+    - debug
+    - thor
+    - online-list
+    - stored-messages
+    - spawn-locations
+    - info
+    - world
+    - player
+    - god
+    - flight
+
+# Configurations for CommandBook's built-in components are stored here.
+# Custom component configurations are stored as individual files in the the config/ folder
+component:
+    bans:
+        message: You have been banned
+        broadcast-bans: true
+        broadcast-kicks: true
+    homes:
+        per-world: false
+    warps:
+        per-world: false
+    afk-checker:
+        use-movement-event: true
+        movement-threshold: 0.04
+        sneak-movement-threshold: 0.004
+        afk-minutes:
+        afk-kick-minutes:
+        afk-general-sleep-ignored: true
+        afk-command-sleep-ignored: false
+        afk-general-protection: true
+        afk-command-protection: false
+        npc-compatibility-mode: false
+    messaging:
+        console-say-format: <`r*`cConsole`w> %s
+        broadcast-format: '`r[Broadcast] %s'
+        pm-color: GRAY
+        pm-text-color: RESET
+        twitter-style: true
+    teleports:
+        call-message:
+            sender: '`yTeleport request sent.'
+            target: '`c**TELEPORT** %cname%`c requests a teleport! Use /bring <name>
+                to accept.'
+            too-soon: Wait a bit before asking again.
+        bring-message:
+            sender: '`yPlayer teleported.'
+            target: '`yYour teleport request to %cname%`y was accepted.'
+            no-perm: That person didn't request a teleport (recently) and you don't have permission to teleport anyone.
+    inventory:
+        item-permissions-only: false
+        allowed-items: []
+        disllowed-items: []
+        default-item-stack-size: 1
+    time-control:
+        time-lock:
+        time-lock-delay: 20
+    thor:
+        hammer-items:
+        - 257
+        - 278
+        - 270
+        - 285
+    online-list:
+        show-max-players: true
+        grouped-names: false
+        list-on-join: true
+    stored-messages:
+        motd: |-
+            `&3Welcome to &eKeet&4&lNetwork &3Server!     &3For more information, contact Keet Network Staff for more Information!
+         rules: |-
+         -§c──────────§6 Keet Network Rules§c──────────
+         §aBe respectful §eand be a good sport.
+         §eDo not §cspam chat§e, or §cadvertise §eother servers.
+         §eYou can share you livestreams or videos after or before a match.
+         §eDo not §cabuse gliches §eor use client mods to §ccheat.
+         §eSe the §cmap rules §eafter playing by typing /map command.
+         §eAll infractions are subject to §cstaff discretion.
+      spawn-locations:
+        exact-spawn: false
+        centered-teleport: false
+    god:
+        auto-enable: false
+    flight:
+        auto-enable: false
+        check-world-change: true
